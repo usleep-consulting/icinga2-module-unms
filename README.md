@@ -60,7 +60,7 @@ You can use [Git](#git) or simply [Download the Release](#download-the-release) 
 Execute the following `git` command from the shell in your project directory:
 
 ```sh
-git clone https://github.com/MonSansFil/unms.git
+git clone https://github.com/spacie2136/unms.git
 ```
 
 When git is done cloning, include the file containing the class like so in your code:
