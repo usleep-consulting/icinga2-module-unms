@@ -1,4 +1,4 @@
-Just forked this class to make it Work and not depend on first developer  ;-)
+Just forked this class to make it Work (its working now) and not depend on first developer  ;-)
 Commits welcome!
 
 
@@ -115,6 +115,7 @@ If you would like to contribute code (improvements), please open an issue and in
 
 This class is based on the work done by the following developers:
 - Malle-pietje: https://github.com/Art-of-WiFi/UniFi-API-client
+- MonSansFil: https://github.com/MonSansFil/unms
 
 ## Important Disclaimer
 
