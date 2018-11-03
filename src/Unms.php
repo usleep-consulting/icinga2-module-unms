@@ -746,7 +746,7 @@ class Unms
                     output('Curl error: ' . curl_error($curl_login));
             }
 
-            $header = \Ubnt::get_headers_from_curl_response($content);
+            $header = \Unms::get_headers_from_curl_response($content);
 
             $header_size = curl_getinfo($curl_login, CURLINFO_HEADER_SIZE);
             $body        = trim(substr($content, $header_size));
@@ -883,5 +883,26 @@ class Unms
         if ($this->debug) curl_setopt($ch, CURLOPT_VERBOSE, true);
 
         return $ch;
+    }
+    
+    /**
+     * Parse curl header object
+     */
+    private function get_headers_from_curl_response($headerContent)
+    {
+        $headers = array();
+        // split the string on every "double" new line.
+        //
+        foreach (explode("\r\n", $headerContent) as $i => $line) {
+            if ($i === 0) {
+                $headers['http_code'] = $line;
+            } else {
+                if (strpos($line, ': ') !== false) {
+                    list($key, $value) = explode(': ', $line);
+                    $headers[$key][] = $value;
+                }
+            }
+        }
+        return $headers;
     }
 }
