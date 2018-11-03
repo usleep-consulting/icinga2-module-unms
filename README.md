@@ -1,3 +1,7 @@
+Just forked this class to make it Work ;-)
+Help welcome
+
+
 ## UNMS API client class
 
 A PHP class which provides access to Ubiquiti's **UNMS API**, versions 2.1 of the UNMS Controller software is supported. It's a standalone version of the class which is used in our monsansfil.ca project which is a private project.
