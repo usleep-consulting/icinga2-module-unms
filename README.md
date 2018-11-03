@@ -1,5 +1,5 @@
-Just forked this class to make it Work ;-)
-Help welcome
+Just forked this class to make it Work and not depend on first developer  ;-)
+Commits welcome!
 
 
 ## UNMS API client class
