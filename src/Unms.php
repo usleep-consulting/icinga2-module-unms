@@ -716,7 +716,7 @@ class Unms
             #Login to get x-auth-token
             #
 
-            $curl_login = curl_init();
+            $curl_login = \Unms::get_curl_obj();
             curl_setopt($curl_login, CURLOPT_URL,$url);
             curl_setopt($curl_login, CURLOPT_CUSTOMREQUEST, "POST");
             curl_setopt($curl_login, CURLOPT_POSTFIELDS, $login_json);
@@ -874,10 +874,14 @@ class Unms
 
         if($this->curl_ssl_verify_peer) {
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        } else {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         }
 
         if($this->curl_ssl_verify_host) {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+        } else {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         }
 
         if ($this->debug) curl_setopt($ch, CURLOPT_VERBOSE, true);
