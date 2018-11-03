@@ -492,6 +492,14 @@ class Unms
     }
 
 
+    /**
+     * Restart device
+     */
+    public function restartDevice($deviceId) {
+        if (!$this->is_loggedin) return false;
+        $response = $this->exec_curl('/v2.1/devices/'.$deviceId.'/restart');
+        return $this->process_response($response);
+    }
 
     /**
      * Get the devices at the root of a site. This will not return child sites devices
