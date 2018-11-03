@@ -71,7 +71,7 @@ require_once('path/to/src/Unms.php');
 
 ### Download the Release
 
-If you prefer not to use composer or git, you can simply [download the package](https://github.com/Art-of-WiFi/UniFi-API-client/archive/master.zip), uncompress the zip file, then include the file containing the class in your code like so:
+If you prefer not to use composer or git, you can simply [download the package](https://github.com/spacie2136/unms/archive/master.zip), uncompress the zip file, then include the file containing the class in your code like so:
 
 ```php
 require_once('path/to/src/Unms.php');
@@ -105,7 +105,7 @@ $results          = $unms_connection->getDevices($site_id); // returns a PHP arr
 
 ## Need help or have suggestions?
 
-There is still work to be done to add functionality and improve the usability of this class, so all suggestions/comments are welcome. Please use the github [issue](https://github.com/MonSansFil/unms/issues) list to share your ideas/questions.
+There is still work to be done to add functionality and improve the usability of this class, so all suggestions/comments are welcome. Please use the github [issue](https://github.com/spacie2136/unms/issues) list to share your ideas/questions.
 
 ## Contribute
 
