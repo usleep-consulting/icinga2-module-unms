@@ -502,6 +502,15 @@ class Unms
     }
 
     /**
+     * Delete device
+     */
+    public function deleteDevice($deviceId) {
+        if (!$this->is_loggedin) return false;
+        $response = $this->exec_curl('/v2.1/devices/'.$deviceId);
+        return $this->process_response($response);
+    }
+    
+    /**
      * Get the devices at the root of a site. This will not return child sites devices
      * @param  string $siteId the site Id to get the devices from
      * @return object       The return value from the API or FALSE if an error occured
