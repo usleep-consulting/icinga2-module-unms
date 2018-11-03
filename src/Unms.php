@@ -506,6 +506,7 @@ class Unms
      */
     public function deleteDevice($deviceId) {
         if (!$this->is_loggedin) return false;
+        $this->request_type = 'DELETE';
         $response = $this->exec_curl('/v2.1/devices/'.$deviceId);
         return $this->process_response($response);
     }
