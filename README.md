@@ -35,6 +35,8 @@ The class currently supports the following functions/methods to get/post/put/del
 - geteRouterDHCPLeases()
 - getAircubeWirelessInfo()
 
+- restartDevice($deviceId)
+
 
 Internal functions, getters/setters:
 
