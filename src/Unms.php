@@ -502,7 +502,7 @@ class Unms
     {
         if (!$this->is_loggedin) return false;
         if($siteId) $response = $this->exec_curl('/v2.1/devices?siteId='.$siteId);
-        else $response = $this->exec_curl('/v2.1/devices);
+        else $response = $this->exec_curl('/v2.1/devices');
         return $this->process_response($response);
     }
 
