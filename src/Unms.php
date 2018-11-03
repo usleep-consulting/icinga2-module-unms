@@ -17,6 +17,13 @@
 
 
 /**
+ * Auxiliary output function
+ */
+function output($string) {
+    echo "OUTPUT: $string\n";
+}
+
+/**
  * the Unms API client class
  */
 class Unms
