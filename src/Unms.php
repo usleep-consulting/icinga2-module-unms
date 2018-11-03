@@ -763,9 +763,9 @@ class Unms
 
             $token= false;
 
-            if($header && isset($header['x-auth-token']))
+            if($header && isset($header['x-auth-token'][0]))
             {
-                $token = $header['x-auth-token'];
+                $token = $header['x-auth-token'][0];
             }
 
             $this->token = $token;
