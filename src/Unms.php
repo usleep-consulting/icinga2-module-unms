@@ -498,10 +498,11 @@ class Unms
      * @param  string $siteId the site Id to get the devices from
      * @return object       The return value from the API or FALSE if an error occured
      */
-    public function getDevices($siteId)
+    public function getDevices($siteId=false)
     {
         if (!$this->is_loggedin) return false;
-        $response    = $this->exec_curl('/v2.1/devices?siteId='.$siteId);
+        if($siteId) $response = $this->exec_curl('/v2.1/devices?siteId='.$siteId);
+        else $response = $this->exec_curl('/v2.1/devices);
         return $this->process_response($response);
     }
 
