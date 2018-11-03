@@ -1,15 +1,15 @@
 <?php
 /**
  *
- * This Unms API client is made by the DEV team @ MonSansFil
+ * This Unms API client is made by Josef Karczewski
+ *
+ * Initialy started by the DEV team @ MonSansFil
  * and is part of the monsansfil.ca project
  *
- * @author Patrice Guillemette <patriceguillemette.com>
+ * @original_author Patrice Guillemette <patriceguillemette.com>
  *
  * This Unms API client is based on the work done by the following developers:
  * Malle-pietje: https://github.com/Art-of-WiFi/UniFi-API-client
- *
- * Copyright (c) 2018, MonSansFil <info@monsansfil.ca>
  *
  * This source file is subject to the MIT license that is bundled
  * with this package in the file LICENSE.md
