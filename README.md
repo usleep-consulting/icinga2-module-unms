@@ -42,6 +42,7 @@ Internal functions, getters/setters:
 
 - set_debug()
 - get_debug()
+- set_auto_logout(true/false)
 - get_last_results_raw()
 - get_last_error_message()
 
