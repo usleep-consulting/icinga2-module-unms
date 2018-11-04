@@ -15,6 +15,7 @@
  * with this package in the file LICENSE.md
  */
 
+namespace Spacie2136;
 
 /**
  * Auxiliary output function
@@ -31,6 +32,7 @@ class Unms
     protected $baseurl            = 'myhost.com:443';
     protected $debug              = false;
     protected $is_loggedin        = false;
+    protected $auto_logout        = true;
     private $token                = '';
     private $request_type         = 'POST';
     private $last_error_message   = null;
@@ -72,7 +74,7 @@ class Unms
         /**
          * logout, if needed
          */
-        if ($this->is_loggedin) $this->logout();
+        if ( ($this->is_loggedin) && ($this->$auto_logout) ) $this->logout();
     }
 
     /**
@@ -92,6 +94,14 @@ class Unms
         return false;
     }
 
+    /**
+     * Disable or enable logout on destruct
+     */
+    public function set_auto_logout($logout=true) {
+        $this->auto_logout = $logout;
+        return true;
+    }
+    
     /**
      * Create a site or client in UNMS
      * @param  array $site array containing all or some of theses parameters
