@@ -103,6 +103,14 @@ class Unms
     }
     
     /**
+     * Get access token
+     */
+    public function get_token() {
+        if (!$this->is_loggedin) return false;
+        return $this->token;
+    }
+    
+    /**
      * Create a site or client in UNMS
      * @param  array $site array containing all or some of theses parameters
      *                     integer parentSiteId     The parentSiteId if you want to create a client
