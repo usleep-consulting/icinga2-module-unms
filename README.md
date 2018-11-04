@@ -36,7 +36,7 @@ The class currently supports the following functions/methods to get/post/put/del
 - getAircubeWirelessInfo()
 
 - restartDevice($deviceId)
-
+- deleteDevice($deviceId)
 
 Internal functions, getters/setters:
 
