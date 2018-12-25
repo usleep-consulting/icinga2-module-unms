@@ -1,3 +1,4 @@
+
 Just forked this class to make it Work (its working now) and not depend on first developer  ;-)
 Commits welcome!
 
