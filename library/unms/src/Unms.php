@@ -15,8 +15,6 @@
  * with this package in the file LICENSE.md
  */
 
-namespace Spacie2136;
-
 /**
  * Auxiliary output function
  */
@@ -74,7 +72,7 @@ class Unms
         /**
          * logout, if needed
          */
-        if ( ($this->is_loggedin) && ($this->$auto_logout) ) $this->logout();
+        if ( ($this->is_loggedin) && ($this->auto_logout) ) $this->logout();
     }
 
     /**
