@@ -15,6 +15,8 @@
  * with this package in the file LICENSE.md
  */
 
+namespace Icinga\Module\Unms;
+
 /**
  * Auxiliary output function
  */
@@ -25,7 +27,7 @@ function output($string) {
 /**
  * the Unms API client class
  */
-class Unms
+class UnmsAPI
 {
     protected $baseurl            = 'myhost.com:443';
     protected $debug              = false;
@@ -758,7 +760,7 @@ class Unms
             #Login to get x-auth-token
             #
 
-            $curl_login = \Unms::get_curl_obj();
+            $curl_login = UnmsAPI::get_curl_obj();
             curl_setopt($curl_login, CURLOPT_URL,$url);
             curl_setopt($curl_login, CURLOPT_CUSTOMREQUEST, "POST");
             curl_setopt($curl_login, CURLOPT_POSTFIELDS, $login_json);
@@ -788,7 +790,7 @@ class Unms
                     output('Curl error: ' . curl_error($curl_login));
             }
 
-            $header = \Unms::get_headers_from_curl_response($content);
+            $header = UnmsAPI::get_headers_from_curl_response($content);
 
             $header_size = curl_getinfo($curl_login, CURLINFO_HEADER_SIZE);
             $body        = trim(substr($content, $header_size));

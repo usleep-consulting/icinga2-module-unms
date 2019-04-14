@@ -1,0 +1,5 @@
+Name: UNMS
+Version: 0.1.0
+Depends: director>=1.3.0
+Description: UBNT UNMS module for Icinga Web 2
+ This module provides an Ubiquiti UNMS import source for Icinga Director
