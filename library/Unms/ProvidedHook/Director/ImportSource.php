@@ -21,23 +21,21 @@ class ImportSource extends ImportSourceHook
      */
     public function fetchData()
     {
-      /* if ($this->getSetting('query_type') === 'resource') {
-      return $this->fetchResourceData();
-      } */
+      $api     = $this->api();
+      $devices = $api->getDevices();
+      $data    = array();
 
-      $api  = $this->api();
-      $data = array();
+      foreach ($devices as $d) {
+        $arr  = (array) $d;
+        $vars = $this->flattenWithKeys($arr, '.');
 
-      // TODO: flatten the entire array and use period namespaced keys 
-      // (rather than hardcoding like this)
-      foreach ($api->getDevices() as $d) {
         $data[] = (object) array(
           'hostname'    => $d->identification->hostname,
           'displayname' => $d->identification->displayName,
           'macaddr'     => $d->identification->mac,
-          'model'       => $d->identification->modelName,
           'role'        => $d->identification->role,
           'ip'          => preg_replace('/(.*)\/.*/', '$1', $d->ipAddress),
+          'vars'        => $vars
         );
       };
 
@@ -49,40 +47,27 @@ class ImportSource extends ImportSourceHook
      */
     public function listColumns()
     {
-        /* if ($this->getSetting('query_type') === 'resource') {
-            return array(
-                'certname',
-                'type',
-                'title',
-                'exported',
-                'parameters',
-                'environment',
-            );
-        } */
+        $api     = $this->api();
+        $devices = $api->getDevices();
+        $keys    = array();
 
-        $columns = array(
+        foreach ($devices as $k => $v) {
+          $d_arr  = (array) $v;
+          $nskeys = array_keys($this->flattenWithKeys($d_arr, '.', 'vars.'));
+          array_push($keys, $nskeys);
+        }
+
+        $columns = array_merge(array(
             'hostname',
             'displayname',
             'macaddr',
-            'model',
             'role',
-            'ip'
-        );
-
-        /* foreach ($this->db()->listFactNames() as $name) {
-            $columns[] = 'facts.' . $name;
-        } */
+            'ip',
+            'vars'
+          ), array_unique($nskeys));
 
         return $columns;
     }
-
-    /**
-     * @return \stdClass[]
-     */
-    /* protected function fetchResourceData()
-    {
-        return $this->db()->fetchResourcesByType($this->getSetting('resource_type'));
-    } */
 
     /**
      * @inheritdoc
@@ -127,6 +112,16 @@ class ImportSource extends ImportSourceHook
         ));
 
         return;
+    }
+
+    protected function flattenWithKeys(array $array, $childPrefix = '.', $root = '', $result = array())
+    {
+      foreach($array as $k => $v) {
+        if(is_array($v) || is_object($v)) $result = $this->flattenWithKeys( (array) $v, $childPrefix, $root . $k . $childPrefix, $result);
+        else $result[ $root . $k ] = $v;
+      }
+
+      return $result;
     }
 
     /**
